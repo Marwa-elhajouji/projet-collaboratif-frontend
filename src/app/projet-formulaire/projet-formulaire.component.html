@@ -1,0 +1,6 @@
+<h2>Ajouter un projet</h2>
+<form [formGroup]="projetForm" (ngSubmit)="onSubmit()">
+  <label for="nom">Nom du projet :</label>
+  <input id="nom" formControlName="nom" />
+  <button type="submit" [disabled]="projetForm.invalid">Créer</button>
+</form>

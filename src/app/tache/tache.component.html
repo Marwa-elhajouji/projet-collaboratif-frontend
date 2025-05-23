@@ -1,0 +1,25 @@
+<h2>Liste des tâches</h2>
+
+<ul class="list-group mb-4">
+  <li *ngFor="let tache of taches" class="list-group-item d-flex justify-content-between align-items-center">
+    <span>{{ tache.titre }} - <strong>{{ tache.statut }}</strong></span>
+    <button class="btn btn-danger btn-sm" (click)="supprimerTache(tache.id!)">Supprimer</button>
+  </li>
+</ul>
+
+
+<h3>Ajouter une tâche</h3>
+<form (ngSubmit)="ajouterTache()" #form="ngForm">
+  <input type="text" [(ngModel)]="nouvelleTache.titre" name="titre" placeholder="Titre" required />
+  <input type="text" [(ngModel)]="nouvelleTache.description" name="description" placeholder="Description" required />
+  <input type="date" [(ngModel)]="nouvelleTache.dateDebut" name="dateDebut" required />
+  <input type="date" [(ngModel)]="nouvelleTache.dateFin" name="dateFin" required />
+
+  <select [(ngModel)]="nouvelleTache.statut" name="statut" required>
+    <option value="A_FAIRE">À faire</option>
+    <option value="EN_COURS">En cours</option>
+    <option value="TERMINEE">Terminée</option>
+  </select>
+
+  <button type="submit">Ajouter</button>
+</form>

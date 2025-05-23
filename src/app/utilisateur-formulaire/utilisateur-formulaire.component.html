@@ -1,0 +1,16 @@
+<h2 class="mb-3">Ajouter un utilisateur</h2>
+<form [formGroup]="utilisateurForm" (ngSubmit)="onSubmit()" class="mb-4 p-3 border rounded bg-light">
+  <div class="mb-3">
+    <label for="nom-utilisateur" class="form-label">Nom :</label>
+    <input id="nom-utilisateur" class="form-control" formControlName="nom" />
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email :</label>
+    <input id="email" type="email" class="form-control" formControlName="email" />
+  </div>
+  <div class="mb-3">
+    <label for="motDePasse" class="form-label">Mot de passe :</label>
+    <input id="motDePasse" type="password" class="form-control" formControlName="motDePasse" />
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="utilisateurForm.invalid">Ajouter</button>
+</form>
