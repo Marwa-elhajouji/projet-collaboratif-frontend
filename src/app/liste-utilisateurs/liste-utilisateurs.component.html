@@ -1,6 +1,25 @@
+<div class="container">
+
 <h2>Liste des utilisateurs</h2>
-<ul>
-  <li *ngFor="let utilisateur of utilisateurs">
-    {{ utilisateur.nom }} - {{ utilisateur.email }}
-  </li>
-</ul>
+ <button class="btn btn-success mb-3" (click)="ajouterUtilisateur()">Ajouter un utilisateur</button>
+<table>
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let utilisateur of utilisateurs">
+      <td>{{ utilisateur.nom }}</td>
+      <td>{{ utilisateur.email }}</td>
+      <td>
+        
+        <button (click)="modifierUtilisateur(utilisateur.id!!)">Modifier</button>
+        <button (click)="supprimerUtilisateur(utilisateur.id!!)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

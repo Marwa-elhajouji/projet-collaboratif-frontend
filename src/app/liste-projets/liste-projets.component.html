@@ -1,6 +1,14 @@
+<div class="container">
 <h2>Liste des projets</h2>
-<ul>
-  <li *ngFor="let projet of projets">
+<form [formGroup]="projetForm" (ngSubmit)="onSubmit()" class="mb-3">
+  <label>Nom du projet : </label>
+  <input formControlName="nom" class="form-control" />
+  <button class="btn btn-success mt-2">Créer</button>
+</form>
+
+<ul class="list-group">
+  <li *ngFor="let projet of projets" class="list-group-item">
     {{ projet.nom }}
   </li>
 </ul>
+</div>
