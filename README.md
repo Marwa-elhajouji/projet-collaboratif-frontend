@@ -51,10 +51,18 @@ To build and run the app in a Docker container:
 
 ```bash
 docker build -t projet-collaboratif-frontend .
-docker run -p 4200:80 projet-collaboratif-frontend
+docker run -d -p 4200:80 projet-collaboratif-frontend
 ```
 
 Then visit: http://localhost:4200
+
+##  Backend Communication in Docker
+
+When running the frontend in Docker, the frontend container **does not share the same "localhost"** as the backend container. To avoid `ERR_CONNECTION_REFUSED` errors when accessing the backend (e.g. `http://localhost:8080/api`):
+
+- The backend should be run with Docker Compose (or another method) and **must expose port 8080 to the host**.
+- The frontend must keep using `http://localhost:8080` as its API base URL in `environment.ts`, so that requests from the browser (outside Docker) reach the backend correctly.
+
 
 ## CI/CD Pipeline (GitHub Actions)
 
