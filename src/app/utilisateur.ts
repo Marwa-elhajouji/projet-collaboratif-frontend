@@ -5,5 +5,5 @@ export interface Utilisateur {
   nom: string;
   email: string;
   motDePasse: string;
-  role: Role | { id: number };
+  role?: Role | { id: number };
 }

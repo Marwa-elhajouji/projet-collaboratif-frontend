@@ -6,7 +6,7 @@ import { environment } from './environments/environment';
 export interface Projet {
   id?: number;
   nom: string;
-  description: string;
+  description?: string;
 }
 
 @Injectable({
