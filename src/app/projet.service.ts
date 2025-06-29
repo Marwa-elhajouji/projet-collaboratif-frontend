@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from './environments/environment';
 
 export interface Projet {
   id?: number;
   nom: string;
-   description: string; 
+  description: string;
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProjetService {
-  private apiUrl = 'http://localhost:8080/api/projets';
+  private apiUrl = `${environment.apiUrl}/projets`;
 
   constructor(private http: HttpClient) {}
 
@@ -24,11 +25,11 @@ export class ProjetService {
     return this.http.post<Projet>(this.apiUrl, projet);
   }
   getAllProjets(): Observable<Projet[]> {
-  return this.http.get<Projet[]>(this.apiUrl);
-}
+    return this.http.get<Projet[]>(this.apiUrl);
+  }
 
-deleteProjet(id: number): Observable<void> {
-  return this.http.delete<void>(`${this.apiUrl}/${id}`);
-}
-
+  deleteProjet(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+  
 }
