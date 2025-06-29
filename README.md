@@ -38,6 +38,17 @@ npm run test
 
 Runs the unit tests using Karma with the ChromeHeadless browser.
 
+## Code Coverage Report
+
+This project includes automated unit tests with code coverage tracking.  
+Every push and pull request to the `main` branch triggers a GitHub Actions workflow that runs the test suite and generates an HTML coverage report.
+
+The report is automatically published to GitHub Pages and can be viewed here:
+
+[View Coverage Report](https://Marwa-elhajouji.github.io/projet-collaboratif-frontend)
+
+
+
 ## Start Development Server
 
 ```bash
@@ -66,12 +77,11 @@ When running the frontend in Docker, the frontend container **does not share the
 
 ## CI/CD Pipeline (GitHub Actions)
 
-The project includes a GitHub Actions workflow (.github/workflows/frontend.yml) that:
+The project includes a GitHub Actions workflow (`.github/workflows/frontend.yml`) that:
 
-Installs dependencies with npm ci
+- Installs dependencies with `npm ci`
+- Runs unit tests with coverage: `npm run test:coverage`
+- Builds the Angular application: `npm run build`
+- Publishes the HTML coverage report automatically to GitHub Pages
 
-Runs tests: npm run test -- --watch=false --browsers=ChromeHeadless
-
-Builds the application with: npm run build
-
-This pipeline runs automatically on every push and pull_request to the main branch.
+This pipeline runs automatically on every `push` and `pull_request` to the `main` branch.
