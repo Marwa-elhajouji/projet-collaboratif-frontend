@@ -86,3 +86,14 @@ The project includes a GitHub Actions workflow (`.github/workflows/frontend.yml`
 - Publishes the HTML coverage report automatically to GitHub Pages
 
 This pipeline runs automatically on every `push` and `pull_request` to the `main` branch.
+
+## Docker Image Deployment
+
+The CI/CD pipeline also builds and pushes a Docker image of the Angular frontend to [Docker Hub](https://hub.docker.com/).
+
+- The image is built automatically and pushed on every push or pull request to the `main` branch via GitHub Actions.
+- You can pull and run the image locally with the following commands:
+
+```bash
+docker pull marwael/projet-collaboratif-frontend
+docker run -d -p 4200:80 marwael/projet-collaboratif-frontend
