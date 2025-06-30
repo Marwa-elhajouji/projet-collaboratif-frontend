@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for app/liste-utilisateurs/liste-utilisateurs.component.ts</title>
+    <title>Code coverage report for app/liste-projets/liste-projets.component.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">app/liste-utilisateurs</a> liste-utilisateurs.component.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">app/liste-projets</a> liste-projets.component.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/12</span>
+                <span class='fraction'>8/12</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/9</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.54% </span>
+                <span class="strong">63.63% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/11</span>
+                <span class='fraction'>7/11</span>
             </div>
         
             
@@ -108,7 +108,13 @@
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -121,79 +127,76 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, OnInit } from '@angular/core';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UtilisateurService } from '../utilisateur.service';
-import { Utilisateur } from '../utilisateur';
-import { Router } from '@angular/router';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { ProjetService, Projet } from '../projet.service';
 &nbsp;
 @Component({
-  selector: 'app-liste-utilisateurs',
+  selector: 'app-liste-projets',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './liste-utilisateurs.component.html',
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './liste-projets.component.html',
 })
-export class ListeUtilisateursComponent implements OnInit {
-  utilisateurs: Utilisateur[] = [];
+export class ListeProjetsComponent implements OnInit {
+  projets: Projet[] = [];
+  projetForm: FormGroup;
 &nbsp;
-  constructor(
-    private utilisateurService: UtilisateurService,
-    private router: Router
-  ) {}
-&nbsp;
-  ngOnInit(): void {
-    this.utilisateurService.getUtilisateurs().subscribe({
-      next: (data) =&gt; {
-        this.utilisateurs = data;
-      },
-      error: <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {},
+  constructor(private projetService: ProjetService, private fb: FormBuilder) {
+    this.projetForm = this.fb.group({
+      nom: ['', Validators.required],
     });
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  ajouterUtilisateur(</span>): void {
-<span class="cstat-no" title="statement not covered" >    this.router.navigate(['/utilisateurs/nouveau']);</span>
+  ngOnInit(): void {
+    this.chargerProjets();
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  modifierUtilisateur(</span>id: number): void {
-<span class="cstat-no" title="statement not covered" >    this.router.navigate(['/utilisateurs/modifier', id]);</span>
+  chargerProjets(): void {
+    this.projetService.getProjets().subscribe((data) =&gt; {
+      this.projets = data;
+    });
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  supprimerUtilisateur(</span>id: number): void {
-<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (confirm('Voulez-vous vraiment supprimer cet utilisateur ?')) {</span>
-<span class="cstat-no" title="statement not covered" >      this.utilisateurService.deleteUtilisateur(id).subscribe(<span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        this.utilisateurs = this.utilisateurs.filter(<span class="fstat-no" title="function not covered" >(u</span>) =&gt; <span class="cstat-no" title="statement not covered" >u.id !== id)</span>;</span>
+<span class="fstat-no" title="function not covered" >  onSubmit(</span>): void {
+<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (this.projetForm.valid) {</span>
+<span class="cstat-no" title="statement not covered" >      this.projetService.addProjet(this.projetForm.value).subscribe(<span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        this.projetForm.reset();</span>
+<span class="cstat-no" title="statement not covered" >        this.chargerProjets();</span>
       });
     }
   }
@@ -205,7 +208,7 @@ export class ListeUtilisateursComponent implements OnInit {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-30T00:11:06.840Z
+                at 2025-06-30T00:17:18.707Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

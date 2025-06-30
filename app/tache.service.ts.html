@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for app/projet.service.ts</title>
+    <title>Code coverage report for app/tache.service.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">app</a> projet.service.ts</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">app</a> tache.service.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -98,7 +98,13 @@
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -113,24 +119,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Injectable } from '@angular/core';
@@ -138,35 +140,36 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from './environments/environment';
 &nbsp;
-export interface Projet {
+export interface Tache {
   id?: number;
-  nom: string;
-  description?: string;
+  titre: string;
+  description: string;
+  dateDebut: string;
+  dateFin: string;
+  statut: 'A_FAIRE' | 'EN_COURS' | 'TERMINEE';
+  utilisateurId: number;
+  projetId: number;
 }
 &nbsp;
 @Injectable({
   providedIn: 'root',
 })
-export class ProjetService {
-  private apiUrl = `${environment.apiUrl}/projets`;
+export class TacheService {
+  private baseUrl = `${environment.apiUrl}/taches`;
 &nbsp;
   constructor(private http: HttpClient) {}
 &nbsp;
-  getProjets(): Observable&lt;Projet[]&gt; {
-    return this.http.get&lt;Projet[]&gt;(this.apiUrl);
+  getAllTaches(): Observable&lt;Tache[]&gt; {
+    return this.http.get&lt;Tache[]&gt;(this.baseUrl);
   }
 &nbsp;
-  addProjet(projet: Projet): Observable&lt;Projet&gt; {
-    return this.http.post&lt;Projet&gt;(this.apiUrl, projet);
-  }
-  getAllProjets(): Observable&lt;Projet[]&gt; {
-    return this.http.get&lt;Projet[]&gt;(this.apiUrl);
+  addTache(tache: Tache): Observable&lt;Tache&gt; {
+    return this.http.post&lt;Tache&gt;(this.baseUrl, tache);
   }
 &nbsp;
-  deleteProjet(id: number): Observable&lt;void&gt; {
-    return this.http.delete&lt;void&gt;(`${this.apiUrl}/${id}`);
+  deleteTache(id: number): Observable&lt;void&gt; {
+    return this.http.delete&lt;void&gt;(`${this.baseUrl}/${id}`);
   }
-  
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -175,7 +178,7 @@ export class ProjetService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-30T00:11:06.840Z
+                at 2025-06-30T00:17:18.707Z
             </div>
         <script src="../prettify.js"></script>
         <script>
