@@ -39,7 +39,6 @@ h4 span {
   background-color: #f3e5f5;
 }
 
-/* Boutons arrondis */
 .btn {
   font-size: 0.85rem;
   font-weight: 500;
@@ -67,6 +66,17 @@ button.btn {
 }
 .btn-secondary:hover {
   background-color: #bcaaa4;
+  border-color: #a1887f;
+}
+.btn-outline-secondary {
+  color: #bcaaa4;
+  border-color: #bcaaa4;
+  background-color: transparent;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #bcaaa4;
+  color: white;
   border-color: #a1887f;
 }
 
@@ -175,5 +185,5 @@ th {
 }
 
 .projet-title:hover {
-  color: #7e57c2;
+  color: #7e57c2; 
 }
