@@ -1,28 +1,87 @@
-<div class="container">
+<div class="container my-5">
+  <h2 class=" text-center fw-bold mb-5 display-6">
+    📋 Liste des tâches par statut
+  </h2>
+  <div *ngFor="let statut of ['A_FAIRE', 'EN_COURS', 'TERMINEE']">
+    <h4 class="mt-4 fw-semibold border-bottom pb-2" [ngClass]="{
+  'statut-a-faire': statut === 'A_FAIRE',
+  'statut-en-cours': statut === 'EN_COURS',
+  'statut-terminee': statut === 'TERMINEE'
+}"
+>
+      <i class="me-2" [ngClass]="{
+        'fas fa-hourglass-start': statut === 'A_FAIRE',
+        'fas fa-spinner': statut === 'EN_COURS',
+        'fas fa-check-circle': statut === 'TERMINEE'
+      }"></i>
+      {{ statut.replace('_', ' ') }}
+    </h4>
 
-<h2>Liste des tâches</h2>
+    <ul class="list-group mb-4">
+      <li *ngFor="let tache of getTachesParStatut(statut)" class="list-group-item shadow-sm">
+        <div><strong>{{ tache.titre }}</strong></div>
+        <div>📌 Projet : {{ tache.projet?.nom || 'N/A' }}</div>
+        <div>👤 Assignée à : {{ tache.utilisateurAssigne?.nom || 'Non assignée' }}</div>
+        <div class="mt-2">
+          <button class="btn btn-sm btn-secondary me-2" (click)="modifierTache(tache)">Modifier</button>
+          <button class="btn btn-sm btn-danger" (click)="supprimerTache(tache.id!)">Supprimer</button>
+        </div>
+      </li>
+    </ul>
+  </div>
 
-<ul class="list-group mb-4">
-  <li *ngFor="let tache of taches" class="list-group-item d-flex justify-content-between align-items-center">
-    <span>{{ tache.titre }} - <strong>{{ tache.statut }}</strong></span>
-    <button class="btn btn-danger btn-sm" (click)="supprimerTache(tache.id!)">Supprimer</button>
-  </li>
-</ul>
+  <h3 class="text-secondary fw-bold border-bottom pb-2 mt-5">➕ Ajouter une tâche</h3>
 
+  <div *ngIf="nouvelleTache.id" class="alert alert-info">
+    ✏️ Vous modifiez la tâche <strong>{{ nouvelleTache.titre }}</strong>
+    <button type="button" class="btn btn-sm btn-link" (click)="resetFormulaire()">Annuler</button>
+  </div>
 
-<h3>Ajouter une tâche</h3>
-<form (ngSubmit)="ajouterTache()" #form="ngForm">
-  <input type="text" [(ngModel)]="nouvelleTache.titre" name="titre" placeholder="Titre" required />
-  <input type="text" [(ngModel)]="nouvelleTache.description" name="description" placeholder="Description" required />
-  <input type="date" [(ngModel)]="nouvelleTache.dateDebut" name="dateDebut" required />
-  <input type="date" [(ngModel)]="nouvelleTache.dateFin" name="dateFin" required />
-
-  <select [(ngModel)]="nouvelleTache.statut" name="statut" required>
-    <option value="A_FAIRE">À faire</option>
-    <option value="EN_COURS">En cours</option>
-    <option value="TERMINEE">Terminée</option>
-  </select>
-
-  <button type="submit">Ajouter</button>
-</form>
+  <form (ngSubmit)="ajouterTache()" #form="ngForm" class="row g-3 mt-3">
+    <div class="col-md-6">
+      <label>Titre :</label>
+      <input type="text" [(ngModel)]="nouvelleTache.titre" name="titre" required class="form-control" />
+    </div>
+    <div class="col-md-6">
+      <label>Description :</label>
+      <input type="text" [(ngModel)]="nouvelleTache.description" name="description" required class="form-control" />
+    </div>
+    <div class="col-md-6">
+      <label>Date début :</label>
+      <input type="date" [(ngModel)]="nouvelleTache.dateDebut" name="dateDebut" required class="form-control" />
+    </div>
+    <div class="col-md-6">
+      <label>Date fin :</label>
+      <input type="date" [(ngModel)]="nouvelleTache.dateFin" name="dateFin" required class="form-control" />
+    </div>
+    <div class="col-md-4">
+      <label>Statut :</label>
+      <select [(ngModel)]="nouvelleTache.statut" name="statut" required class="form-select">
+        <option value="A_FAIRE">À faire</option>
+        <option value="EN_COURS">En cours</option>
+        <option value="TERMINEE">Terminée</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label>Utilisateur :</label>
+      <select [(ngModel)]="nouvelleTache.utilisateurId" name="utilisateurId" required class="form-select">
+        <option *ngFor="let user of utilisateurs" [value]="user.id">
+          {{ user.nom }} {{ user.prenom || '' }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label>Projet :</label>
+      <select [(ngModel)]="nouvelleTache.projetId" name="projetId" required class="form-select">
+        <option *ngFor="let projet of projets" [value]="projet.id">
+          {{ projet.nom }}
+        </option>
+      </select>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary w-100">
+        {{ nouvelleTache.id ? 'Mettre à jour' : 'Ajouter' }}
+      </button>
+    </div>
+  </form>
 </div>

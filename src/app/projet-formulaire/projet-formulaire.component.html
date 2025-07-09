@@ -1,6 +1,63 @@
-<h2>Ajouter un projet</h2>
-<form [formGroup]="projetForm" (ngSubmit)="onSubmit()">
-  <label for="nom">Nom du projet :</label>
-  <input id="nom" formControlName="nom" />
-  <button type="submit" [disabled]="projetForm.invalid">Créer</button>
-</form>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">
+    📁 Liste des projets
+  </h2>
+
+  <div class="table-responsive mb-4">
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-light text-center">
+        <tr>
+          <th>Nom</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let projet of projets">
+          <td>{{ projet.nom }}</td>
+          <td>{{ projet.description }}</td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-secondary me-2" (click)="onEdit(projet)">
+              Modifier
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="onDelete(projet.id)">
+              Supprimer
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <h4 class="text-center mb-3">
+    {{ editing ? '✏️ Modifier un projet' : '➕ Ajouter un projet' }}
+  </h4>
+
+  <form [formGroup]="projetForm" (ngSubmit)="onSubmit()" class="p-3 border rounded bg-light">
+    <div class="mb-3">
+      <label for="nom" class="form-label">Nom :</label>
+      <input
+        id="nom"
+        class="form-control"
+        formControlName="nom"
+        [class.is-invalid]="projetForm.get('nom')?.invalid && projetForm.get('nom')?.touched"
+      />
+      <div class="text-danger" *ngIf="projetForm.get('nom')?.invalid && projetForm.get('nom')?.touched">
+        Le nom est requis.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description :</label>
+      <textarea id="description" class="form-control" formControlName="description" rows="3"></textarea>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary me-2" [disabled]="projetForm.invalid">
+        {{ editing ? 'Mettre à jour' : 'Ajouter' }}
+      </button>
+      <button type="button" class="btn btn-outline-secondary" *ngIf="editing" (click)="cancelEdit()">Annuler</button>
+    </div>
+  </form>
+</div>

@@ -1,49 +1,60 @@
-<h2 class="mb-3">
-  {{ utilisateurId ? 'Modifier un utilisateur' : 'Ajouter un utilisateur' }}
-</h2>
+<div class="container mt-4 mb-5">
+  <div class="card shadow-sm">
+    <div class="card-header bg-white">
+      <h4 class="mb-0">
+        <i class="bi bi-person-fill"></i>
+        {{ utilisateurId ? 'Modifier un utilisateur' : 'Ajouter un utilisateur' }}
+      </h4>
+    </div>
 
-<form [formGroup]="utilisateurForm" (ngSubmit)="onSubmit()" class="mb-4 p-3 border rounded bg-light">
-  <div class="mb-3">
-    <label for="nom-utilisateur" class="form-label">Nom :</label>
-    <input
-      id="nom-utilisateur"
-      class="form-control"
-      formControlName="nom"
-      [class.is-invalid]="utilisateurForm.get('nom')?.invalid && utilisateurForm.get('nom')?.touched"
-    />
-  </div>
-  <div class="mb-3">
-    <label for="email" class="form-label">Email :</label>
-    <input
-      id="email"
-      type="email"
-      class="form-control"
-      formControlName="email"
-      [class.is-invalid]="utilisateurForm.get('email')?.invalid && utilisateurForm.get('email')?.touched"
-    />
-    <div *ngIf="utilisateurForm.get('email')?.invalid && utilisateurForm.get('email')?.touched" class="text-danger">
-    Email invalide
-  </div>
-  </div>
+    <div class="card-body">
+      <form [formGroup]="utilisateurForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="nom-utilisateur" class="form-label">Nom :</label>
+          <input
+            id="nom-utilisateur"
+            class="form-control"
+            formControlName="nom"
+            [class.is-invalid]="utilisateurForm.get('nom')?.invalid && utilisateurForm.get('nom')?.touched"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email :</label>
+          <input
+            id="email"
+            type="email"
+            class="form-control"
+            formControlName="email"
+            [class.is-invalid]="utilisateurForm.get('email')?.invalid && utilisateurForm.get('email')?.touched"
+          />
+          <div *ngIf="utilisateurForm.get('email')?.invalid && utilisateurForm.get('email')?.touched" class="text-danger small">
+            Email invalide
+          </div>
+        </div>
 
-  <div class="mb-3">
-    <label for="motDePasse" class="form-label">Mot de passe :</label>
-    <input
-      id="motDePasse"
-      type="password"
-      class="form-control"
-      formControlName="motDePasse"
-      [class.is-invalid]="utilisateurForm.get('motDePasse')?.invalid && utilisateurForm.get('motDePasse')?.touched"
-    />
+        <div class="mb-3">
+          <label for="motDePasse" class="form-label">Mot de passe :</label>
+          <input
+            id="motDePasse"
+            type="password"
+            class="form-control"
+            formControlName="motDePasse"
+            [class.is-invalid]="utilisateurForm.get('motDePasse')?.invalid && utilisateurForm.get('motDePasse')?.touched"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="roleId" class="form-label">Rôle :</label>
+          <select id="roleId" formControlName="roleId" class="form-select">
+            <option [value]="1">ADMIN</option>
+            <option [value]="2">UTILISATEUR</option>
+          </select>
+        </div>
+        <div class="text-end">
+          <button type="submit" class="btn btn-primary" [disabled]="utilisateurForm.invalid">
+            {{ utilisateurId ? 'Mettre à jour' : 'Ajouter' }}
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
- <div class="mb-3">
-  <label for="roleId" class="form-label">Rôle :</label>
-  <select id="roleId" formControlName="roleId" class="form-control">
-    <option [value]="1">ADMIN</option>
-    <option [value]="2">UTILISATEUR</option>
-  </select>
 </div>
-  <button type="submit" class="btn btn-primary" [disabled]="utilisateurForm.invalid">
-    {{ utilisateurId ? 'Mettre à jour' : 'Ajouter' }}
-  </button>
-</form>

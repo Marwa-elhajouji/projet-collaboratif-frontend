@@ -12,10 +12,8 @@ export const routes: Routes = [
     path: 'utilisateurs/modifier/:id',
     component: UtilisateurFormulaireComponent,
   },
-  // { path: 'projets', component: ProjetFormulaireComponent },
   { path: 'projets', component: ListeProjetsComponent },
 
-  { path: 'projets/nouveau', component: ProjetFormulaireComponent },
 
   { path: 'taches', component: TacheComponent },
   { path: '', redirectTo: 'utilisateurs', pathMatch: 'full' },

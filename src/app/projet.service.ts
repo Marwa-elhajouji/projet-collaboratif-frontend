@@ -31,5 +31,7 @@ export class ProjetService {
   deleteProjet(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
-  
+  updateProjet(id: number, projet: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, projet);
+  }
 }
