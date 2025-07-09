@@ -98,15 +98,23 @@ describe('TacheService', () => {
         utilisateurId: 1,
         projetId: 1,
       };
+      const apiResponse: Tache = {
+        ...newTache,
+        id: 3,
+      };
 
       service.addTache(newTache).subscribe((tache) => {
-        expect(tache).toEqual({ ...newTache, id: 3 });
+        expect(tache).toEqual(apiResponse);
       });
 
       const req = httpMock.expectOne(`${service['baseUrl']}`);
-      expect(req.request.method).toBe('POST'); 
-      expect(req.request.body).toEqual(newTache);
-      req.flush({ ...newTache, id: 3 }); 
+      expect(req.request.method).toBe('POST');
+      expect(req.request.body).toEqual({
+        ...newTache,
+        utilisateurAssigne: { id: 1 },
+        projet: { id: 1 },
+      });
+      req.flush(apiResponse);
     });
 
     it('should handle errors when adding a tache', () => {
